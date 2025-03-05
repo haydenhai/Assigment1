@@ -33,7 +33,10 @@ Acquisition algorithm used here: **Parallel Code Phase search acquisition**
 **5 GPS Satellites are acquired with code delay and doppler shown below**
 ![image](https://github.com/user-attachments/assets/dfc85cc2-599e-4d19-a48a-a67c41c1d902)
 
-GPS PRN 16 22 26 27 31 are acquired!
+GPS PRN 16 22 26 27 31 are acquired! The skyplot is shown below:
+
+![image](https://github.com/user-attachments/assets/5ebe4e29-f3e7-4747-a05d-3d260cfa8b4f)
+
 
 ### Acquisiton result from data ubrn
 
@@ -120,7 +123,25 @@ The shape of ACF is symmetric and undistorted, indicating the satellite is undis
 
 This is the navigation data message decoded from incoming signal.
 
-Key parameters extracted from navigation message,
-## Task 4: Position and velocity estimation
+Key parameters extracted from navigation message.
+**Ephemeris Data (31 parameters)**
 
+![image](https://github.com/user-attachments/assets/8726c04c-6d76-4b80-94af-26dca388a5ef)
+
+## Task 4: Position and velocity estimation
+**Weighted least square for positioning**
+
+**Elevation weighted**
+
+```
+     weight(i)=sin(el(i))^2;
+......
+    W=diag(weight);
+    C=W'*W;
+    x=(A'*C*A)\(A'*C*omc);
+```
+### The positioning result of open-air scenario is shown below, where the yellow dot is the ground truth
+![image](https://github.com/user-attachments/assets/f9209b1d-1ba0-40dc-acae-dcfad9d21c58)
+
+The weighted least squares (WLS) solution demonstrates **high accuracy** in open-air environments, exhibiting close alignment with ground truth measurements. This observed precision can be attributed to the absence of significant signal propagation impairments such as multipath interference and non-line-of-sight (NLOS) errors under unobstructed atmospheric conditions.
 ## Task 5: Kalman-filter based positioning
