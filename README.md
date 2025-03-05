@@ -38,6 +38,7 @@ GPS PRN 16 22 26 27 31 are acquired!
 ### Acquisiton result from data ubrn
 
 ## Task 2: Tracking
+### 2.1 Code Analysis
 The motivation of tracking is to refine carrier frequency and code phase values, keep track.  
 
 Code tracking: early,late prompt discriminator with spacing 0.5 chips
@@ -57,11 +58,39 @@ Using Delay Lock Loop discriminator to adjust the code phase
  codeError = (sqrt(I_E * I_E + Q_E * Q_E) - sqrt(I_L * I_L + Q_L * Q_L)) / ...
                 (sqrt(I_E * I_E + Q_E * Q_E) + sqrt(I_L * I_L + Q_L * Q_L));
 ```
+### 2.2 Multi-correlator Gerneration
 
 **To obtain the Autocorrelation function, multiple correlators must be implemented**
+Here, multiple correlator with spacing 0.1 chip from -0.5 chip to 0.5 chip are applied
+```
+            tcode       = (remCodePhase-0.4) : codePhaseStep : ((blksize-1)*codePhaseStep+remCodePhase-0.4);
+            tcode2      = ceil(tcode) + 1;
+            earlyCode04    = caCode(tcode2);
+            tcode       = (remCodePhase-0.3) : codePhaseStep : ((blksize-1)*codePhaseStep+remCodePhase-0.3);
+            tcode2      = ceil(tcode) + 1;
+            earlyCode03    = caCode(tcode2);
+            tcode       = (remCodePhase-0.2) : codePhaseStep : ((blksize-1)*codePhaseStep+remCodePhase-0.2);
+            tcode2      = ceil(tcode) + 1;
+            earlyCode02    = caCode(tcode2);
+            tcode       = (remCodePhase-0.1) : codePhaseStep : ((blksize-1)*codePhaseStep+remCodePhase-0.1);
+            tcode2      = ceil(tcode) + 1;
+            earlyCode01    = caCode(tcode2);
+            tcode       = (remCodePhase+0.1) : codePhaseStep : ((blksize-1)*codePhaseStep+remCodePhase+0.1);
+            tcode2      = ceil(tcode) + 1;
+            lateCode01    = caCode(tcode2);
+            tcode       = (remCodePhase+0.2) : codePhaseStep : ((blksize-1)*codePhaseStep+remCodePhase+0.2);
+            tcode2      = ceil(tcode) + 1;
+            lateCode02   = caCode(tcode2);
+            tcode       = (remCodePhase+0.3) : codePhaseStep : ((blksize-1)*codePhaseStep+remCodePhase+0.3);
+            tcode2      = ceil(tcode) + 1;
+            lateCode03    = caCode(tcode2);
+            tcode       = (remCodePhase+0.4) : codePhaseStep : ((blksize-1)*codePhaseStep+remCodePhase+0.4);
+            tcode2      = ceil(tcode) + 1;
+            lateCode04   = caCode(tcode2);
 
-Here, multiple correlator with spacing 0.05 chip from -0.5 chip to 0.5 chip are applied
-### Tracking result from data open sky (PRN 16 as an Example)
+```
+
+### 2.3 Tracking result from data open sky (PRN 16 as an Example)
 ![image](https://github.com/user-attachments/assets/9f877a1b-f4e7-4335-84ec-78406e80fb90)
 
 The Q-channel tends to zero: Ideally, the Q-channel contains only noise and residual error, and its value fluctuates around zero， which verifies the carrier phase is aligned.
@@ -78,13 +107,20 @@ PLL output (Phase/Frequency Discriminator Output) near zero: indicates that the 
 
 The Prompt correlation is significantly greater than Early/Late, indicating that the code phases are precisely aligned and the DLL is in a stable tracking state.
 
+**Autocorrelation Function from Multi-correlator output**
+![image](https://github.com/user-attachments/assets/5feecdfe-e1bb-4038-b1a0-592dc2db1b07)
+
+The shape of ACF is symmetric and undistorted, indicating the satellite is undistorted and not under the influence of multipath, which is in agreement with the experiment scenario (Open Sky);
 **Above proves that the satellite in open sky is well acquired and tracked**
 
 ### Tracking result from data urban
 
-## Task 3: Navigation data decoding
+## Task 3: Navigation data decoding (PRN 16 Open-Sky as an Example)
 ![image](https://github.com/user-attachments/assets/25346100-71d7-473d-af67-2d54fb2ac657)
 
+This is the navigation data message decoded from incoming signal.
+
+Key parameters extracted from navigation message,
 ## Task 4: Position and velocity estimation
 
 ## Task 5: Kalman-filter based positioning
