@@ -146,7 +146,8 @@ Key parameters extracted from navigation message.
 The weighted least squares (WLS) solution demonstrates **high accuracy** in open-air environments, exhibiting close alignment with ground truth measurements. This observed precision can be attributed to the absence of significant signal propagation impairments such as multipath interference and non-line-of-sight (NLOS) errors under unobstructed atmospheric conditions.
 
 ![image](https://github.com/user-attachments/assets/eae97665-a27f-470b-b9df-61c1d169205f)
-![image](https://github.com/user-attachments/assets/319383e7-1b33-416e-ad73-959e1fed410b)
+![image](https://github.com/user-attachments/assets/840e7cab-57c8-48ad-9ae2-6c0e3abd1319)
+
 
 The Velocity by WLS varies very significantly if no filtering.
 ## Task 5: Kalman-filter based positioning
