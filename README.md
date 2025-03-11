@@ -1,4 +1,4 @@
-# AAE6102 Assigment1 Report 
+# AAE6102 Assigment1 Report from Hayden
 
 ## Task 1: Acquisition
 The purpose of acquisition is to determine visible satellites and coarse value of **carrier phase** and **code phase** of the satellites signals.  
