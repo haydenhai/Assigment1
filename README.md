@@ -37,8 +37,13 @@ GPS PRN 16 22 26 27 31 are acquired! The skyplot is shown below:
 
 ![image](https://github.com/user-attachments/assets/5ebe4e29-f3e7-4747-a05d-3d260cfa8b4f)
 
+### Acquistion result from urban
 
-### Acquisiton result from data ubrn
+** Four Satellites are acquired**
+
+![image](https://github.com/user-attachments/assets/84d3597b-a623-4d48-a4a9-ba3a3e2e0afc)
+
+Comapred to open-sky environments, less GPS satellites are acquired due to the blockage of buildings.
 
 ## Task 2: Tracking
 ### 2.1 Code Analysis
@@ -140,14 +145,62 @@ Key parameters extracted from navigation message.
     C=W'*W;
     x=(A'*C*A)\(A'*C*omc);
 ```
+
+**Weighted least square for velocity**
+
+```
+%===To calculate receiver velocity=====HD
+b=[];
+lamda=settings.c/1575.42e6;
+rate=-lamda*doppler;
+rate=rate';
+satvelocity=satvelocity';
+for i=1:nmbOfSatellites
+    b(i)=rate(i)-satvelocity(i,:)*(A(i,1:3))';
+end
+v=(A'*C*A)\(A'*C*b');
+```
+
 ### The positioning result of open-air scenario is shown below, where the yellow dot is the ground truth
 ![image](https://github.com/user-attachments/assets/f9209b1d-1ba0-40dc-acae-dcfad9d21c58)
 
 The weighted least squares (WLS) solution demonstrates **high accuracy** in open-air environments, exhibiting close alignment with ground truth measurements. This observed precision can be attributed to the absence of significant signal propagation impairments such as multipath interference and non-line-of-sight (NLOS) errors under unobstructed atmospheric conditions.
 
 ![image](https://github.com/user-attachments/assets/eae97665-a27f-470b-b9df-61c1d169205f)
-![image](https://github.com/user-attachments/assets/840e7cab-57c8-48ad-9ae2-6c0e3abd1319)
+![image](https://github.com/user-attachments/assets/b5f481d8-2eed-43a6-9e54-5564f1663bad)
+
+
 
 
 The Velocity by WLS varies very significantly if no filtering.
-## Task 5: Kalman-filter based positioning
+## Task 5: Kalman-filter based positioning and velociy
+Extended Kalman Filter is applied here
+···
+**state=[x,y,z,vx,vy,vz,dt,ddt](Position, velocity, clock error and clock drift)**
+```
+% prediction 
+X_kk = F * X;
+P_kk = F*P*F'+Q;
+...
+r = Z - h_x;
+S = H * P_kk * H' + R;
+K = P_kk * H' /S; % Kalman Gain
+
+% Update State Estimate
+X_k = X_kk + (K * r);
+I = eye(size(X, 1));
+P_k = (I - K * H) * P_kk * (I - K * H)' + K * R * K';
+```
+
+### The positioning result of EKF under open air.
+![image](https://github.com/user-attachments/assets/4775e670-9c09-48aa-915e-b9680190e555)
+
+Compared to traditional Weighted Least Squares (WLS), Kalman Filter-based positioning exhibits smoother trajectories with fewer abrupt jumps or outliers. This enhanced stability stems from the Kalman Filter’s inherent advantages in dynamic state estimation.
+The Kalman Filter offers superior performance over Weighted Least Squares (WLS) by integrating temporal continuity, dynamic noise adaptation, and recursive state estimation, resulting in smoother, more stable positioning. Unlike WLS, which processes each epoch independently and is prone to measurement noise-induced jumps, the Kalman Filter leverages a state-space model to propagate estimates forward using motion dynamics (velocity and clock drift), while dynamically balancing process noise (Q) and measurement noise (R) to suppress outliers and model uncertainties. 
+
+![image](https://github.com/user-attachments/assets/2e2dec31-5c69-4bdc-984a-d33901594efc)
+
+The velocity after Extended Kalman Filter is alos well improved compared to WLS.
+
+![image](https://github.com/user-attachments/assets/6ac7d05a-1bcb-46e9-aadc-746a770ceb2b)
+
