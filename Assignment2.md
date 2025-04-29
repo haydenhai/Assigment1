@@ -65,3 +65,18 @@ Modern smartphones leverage **RTK**, **PPP**, and **PPP-RTK** GNSS techniques to
 | **PPP-RTK** | ✅ Fast convergence (1-5 minutes)<br>✅ Global + centimeter-level accuracy<br>✅ Works with SSR corrections (e.g., via L-band satellites) | ❌ High processing power needed<br>❌ Dependent on correction networks<br>❌ Limited smartphone compatibility |
 
 # Task 2: GNSS in urban area
+
+**According to the feedback of assignment1, the acquisiton process is replaced with a more sensitive acquisition code**
+
+**using new acquisiton code, 6 GPS satellites in total can be acquired and tracked**
+
+**satellites that can be acquired are showned below**
+![image](https://github.com/user-attachments/assets/36640ab8-ceed-4412-aa39-1e9b8626fb96)
+
+**the original weighted least square positioning result based on elevation angle**
+
+![image](https://github.com/user-attachments/assets/7ae4bdf5-6472-43be-9b83-39dc49c9ea62)
+
+The mean error is 46.01 meters
+
+
