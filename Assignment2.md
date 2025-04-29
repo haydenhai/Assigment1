@@ -44,13 +44,10 @@ PPP-RTK (Precise Point Positioning-Real Time Kinematic) combines the advantages 
 | **PPP**   | 10-30 cm  | Oceanic navigation, scientific research | Slow convergence (15-30 min)        | Real-time applications, urban canyons  |
 | **PPP-RTK** | 2-5 cm | Autonomous vehicles, global mapping   | Needs stable SSR correction stream   | Areas without satellite/cellular coverage |
 
-### Key Usage Patterns:
-1. **DGNSS**: Widest availability (coastal navigation, basic GIS)
-2. **RTK**: Most common for local high-precision (construction, agriculture)
-3. **PPP**: Essential for global/remote applications (offshore, Antarctica)
-4. **PPP-RTK**: Emerging for autonomous systems (drones, connected cars)
-
-### Failure Scenarios:
-- **Urban Areas**: Multipath affects all methods, but RTK/PPP-RTK fail most catastrophically
-- **Polar Regions**: PPP excels where other methods lack reference stations
-- **Emergency Response**: DGNSS often most reliable when infrastructure damaged
+The key differences between these GNSS techniques lie in their error correction methods and infrastructure requirements. **RTK and DGNSS** rely on **double differencing** (e.g., $`\nabla\Delta\Phi = \nabla\Delta\rho + \lambda\nabla\Delta N`$) between a rover and nearby base station (<10 km for RTK, <50 km for DGNSS) to eliminate common errors, making them dependent on local reference stations. In contrast, **PPP** uses precise orbit/clock products without base stations but suffers from slow convergence, while **PPP-RTK** hybridizes both approaches: it applies state-space corrections (like PPP) but also resolves ambiguities using atmospheric models (like RTK), enabling global coverage with faster convergence than PPP. Base station-free PPP excels in remote areas, whereas RTK/DGNSS fail without local infrastructure, and PPP-RTK struggles where correction networks are unavailable.
+| Feature       | Uses Double Differencing | Requires Base Station | Max Range from Base |
+|---------------|--------------------------|-----------------------|---------------------|
+| **DGNSS**     | ❌ (code-based)          | ✅                    | 50 km               |
+| **RTK**       | ✅ (carrier-phase)       | ✅                    | 10 km               |
+| **PPP**       | ❌                       | ❌                    | Global              |
+| **PPP-RTK**   | ⚠️ (SSR-aided)          | ❌*                   | Global*             |
