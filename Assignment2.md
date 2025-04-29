@@ -81,6 +81,16 @@ The mean error is 46.01 meters
 
 In urban environments with sky masking, GNSS positioning is often limited by severe signal obstruction, reducing the number of visible satellites to as few as six. Under such conditions, outright exclusion of NLOS signals—typically caused by reflections off buildings or other structures—would further degrade satellite availability, potentially leading to positioning failures. To address this, the NLOS deweighting method is adopted instead of NLOS exclusion.
 
+**Deweighting when it is classified as NLOS**
+···
+            if settings.hasSkymask 
+                if el(i)>skymask(floor(az(i)),2)
+                    weight(i)=10;
+                else
+                    weight(i)=cosd(abs(el(i)-skymask(floor(az(i)),2)));
+                end
+            end
+···
 Satellites identified as NLOS are assigned reduced weights in the positioning solution rather than being discarded entirely. This approach minimizes their contribution to the navigation fix while maintaining geometric diversity, thereby improving robustness in challenging urban canyons. The deweighting factor can be dynamically adjusted based on the elevation angle difference between satellite and building boundary.
 
 Compared to exclusion, this method provides a more balanced trade-off between mitigating multipath errors and retaining sufficient satellite observations for reliable positioning.
