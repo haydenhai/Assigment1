@@ -11,9 +11,7 @@
 **Reason I use: free model and fantastic math ability, can connect to search for more information, can deep think**
 
 Differential GNSS (DGNSS) enhances positioning accuracy by leveraging a reference station at a known location to compute and broadcast error corrections to nearby users. The reference station calculates discrepancies between its GNSS-derived position and its true coordinates, generating corrections for spatially correlated errors like satellite clock/orbit deviations and ionospheric/tropospheric delays. These corrections are applied to the user’s measurements, improving accuracy to sub-meter or centimeter levels. The measured pseudorange $ \rho_{\text{measured}} $ at the reference station is modeled as:  
-$$  
-\rho_{\text{measured}} = \rho_{\text{true}} + c(\delta t_{\text{sat}} - \delta t_{\text{rec}}) + I + T + \epsilon  
-$$  
+$$  \rho_{\text{measured}} = \rho_{\text{true}} + c(\delta t_{\text{sat}} - \delta t_{\text{rec}}) + I + T + \epsilon  $$  
 where $ \rho_{\text{true}} $ is the true geometric distance, $ c $ is the speed of light, $ \delta t_{\text{sat}} $ and $ \delta t_{\text{rec}} $ are satellite/receiver clock errors, $ I $ and $ T $ are ionospheric and tropospheric delays, and $ \epsilon $ represents noise. The **pseudorange correction (PRC)** is calculated as $ \text{PRC} = \rho_{\text{true}} - \rho_{\text{measured}} $, which users apply to their own measurements:  
 $$  
 \rho_{\text{user\_corrected}} = \rho_{\text{user}} + \text{PRC}.  
