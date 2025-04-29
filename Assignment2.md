@@ -16,22 +16,22 @@ Differential GNSS (DGNSS) enhances positioning accuracy by leveraging a referenc
  \rho_{\text{measured}} = \rho_{\text{true}} + c(\delta t_{\text{sat}} - \delta t_{\text{rec}}) + I + T + \epsilon  
 ```
 
-where $ \rho_{\text{true}} $ is the true geometric distance, $ c $ is the speed of light, $ \delta t_{\text{sat}} $ and $ \delta t_{\text{rec}} $ are satellite/receiver clock errors, $ I $ and $ T $ are ionospheric and tropospheric delays, and $ \epsilon $ represents noise. The **pseudorange correction (PRC)** is calculated as $ \text{PRC} = \rho_{\text{true}} - \rho_{\text{measured}} $, which users apply to their own measurements:  
+where $` \rho_{\text{true}} `$ is the true geometric distance, $` c `$ is the speed of light, $` \delta t_{\text{sat}} `$ and $` \delta t_{\text{rec}} `$ are satellite/receiver clock errors, $` I `$ and $` T `$ are ionospheric and tropospheric delays, and $` \epsilon `$ represents noise. The **pseudorange correction (PRC)** is calculated as $` \text{PRC} = \rho_{\text{true}} - \rho_{\text{measured}} `$, which users apply to their own measurements:  
 
 ```math
 \rho_{\text{user\_corrected}} = \rho_{\text{user}} + \text{PRC}.  
 ``` 
 
-For higher precision, carrier-phase measurements $ \Phi $ are used:  
+For higher precision, carrier-phase measurements $` \Phi `$ are used:  
 
 ```math 
 \Phi = \rho_{\text{true}} + c(\delta t_{\text{sat}} - \delta t_{\text{rec}}) + \lambda N + I - T + \epsilon,  
 ```
 
-where $ \lambda $ is the carrier wavelength and $ N $ is the integer ambiguity. Users perform **double differencing** ($ \nabla \Delta \Phi $) across satellites and receivers to eliminate common errors, yielding:  
+where $` \lambda `$ is the carrier wavelength and $` N `$ is the integer ambiguity. Users perform **double differencing** ($` \nabla \Delta \Phi `$) across satellites and receivers to eliminate common errors, yielding:  
 
 ```math
 \nabla \Delta \Phi = \nabla \Delta \rho_{\text{true}} + \lambda \nabla \Delta N + \nabla \Delta \epsilon.  
 ```
 
-Resolving $ \nabla \Delta N $ enables centimeter-level accuracy. However, DGNSS is limited by distance-dependent error decorrelation (>50 km), unmodeled multipath/noise, and reliance on real-time communication links. It is widely used in maritime navigation, precision agriculture, and surveying, where sub-meter to centimeter accuracy is critical.  
+Resolving $` \nabla \Delta N `$ enables centimeter-level accuracy. However, DGNSS is limited by distance-dependent error decorrelation (>50 km), unmodeled multipath/noise, and reliance on real-time communication links. It is widely used in maritime navigation, precision agriculture, and surveying, where sub-meter to centimeter accuracy is critical.  
