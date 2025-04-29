@@ -16,7 +16,7 @@
 
 **Prompt 5: pros and cons of each of them**
 
-**Reason I use: free model and fantastic math ability, can connect to search for more information, can deep think**
+**Reason I use: Free model with exceptional mathematical capabilities, equipped with live search connectivity for real-time information, and designed for advanced reasoning and deep analytical thinking**
 
 Differential GNSS (DGNSS) enhances positioning accuracy by leveraging a reference station at a known location to compute and broadcast error corrections to nearby users. The reference station calculates discrepancies between its GNSS-derived position and its true coordinates, generating corrections for spatially correlated errors like satellite clock/orbit deviations and ionospheric/tropospheric delays. These corrections are applied to the user’s measurements, improving accuracy to sub-meter or centimeter levels. The measured pseudorange $` \rho_{\text{measured}} `$ at the reference station is modeled as:  
 
