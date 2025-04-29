@@ -109,13 +109,14 @@ The primary limitation of NLOS deweighting is that its effectiveness diminishes 
 # Task 3
 
 # Task 4
+
 **Prompt 1: what is LEO communication satellites, including what system, which one is the most prevalent**
 
 **Prompt 2: where can it be applied, is it potential for navigation system**
 
-**Prompt 4: the potential and current usage of LEO in navigation system**
+**Prompt 3: the potential and current usage of LEO in navigation system**
 
-**Prompt 3: what is the challenge for LEO in navigation**
+**Prompt 4: what is the challenge for LEO in navigation**
 
 Low Earth Orbit (LEO) communication satellites operate at altitudes of 500–2,000 km, enabling low-latency, high-bandwidth connectivity for global internet coverage. Major systems include SpaceX's ​​Starlink​​ (the most prevalent, with over 5,000 active satellites), OneWeb, Amazon's ​​Project Kuiper​​, and Telesat's ​​Lightspeed​​. These constellations use inter-satellite laser links and phased-array antennas to deliver broadband services, with Starlink dominating due to its rapid deployment and commercial availability. LEO satellites outperform traditional GEO systems in latency (<50 ms) but require dense constellations (hundreds to thousands) for continuous coverage. Emerging applications include IoT, military communications, and disaster response.
 
@@ -126,3 +127,19 @@ LEO satellites hold significant potential for navigation due to their ​​stro
 The primary challenges of using LEO satellites for navigation include their ​​rapid orbital motion​​ (~7.8 km/s), which complicates signal tracking and requires frequent handovers, increasing receiver complexity and power consumption. Unlike GNSS, LEO constellations lack standardized ​​navigation-dedicated signals​​, forcing reliance on repurposed communication signals or new protocols (e.g., Xona’s Pulsar). Their ​​dynamic geometry​​ demands real-time ephemeris updates and advanced algorithms to mitigate geometric dilution of precision (GDOP) issues. Additionally, ​​interference risks​​ from dense LEO megaconstellations (e.g., Starlink) and ​​regulatory hurdles​​ for spectrum allocation pose operational barriers. While LEO offers stronger signals and faster convergence, these technical and infrastructural gaps must be resolved to achieve seamless integration with or replacement of traditional GNSS.
 
 # Task 5
+
+**Prompt 1: what is remote sensing**
+
+**Prompt 2: how can GNSS help remote sensing (the impact with examples)**
+
+**Prompt 3: GNSS-R can be applied in remote sensing, what is its advantage**
+
+**Prompt 4: introduce the basic idea of GNSS-R, how it works, how it can help remote sensing**
+
+Remote sensing is the science of ​​acquiring information about objects or areas from a distance​​, typically via satellites, aircraft, drones, or ground-based sensors, without physical contact. It uses ​​electromagnetic radiation​​ (visible light, infrared, radar, etc.) to capture data, enabling applications like ​​environmental monitoring​​ (deforestation, climate change), ​​agriculture​​ (crop health, soil moisture), ​​urban planning​​, and ​​disaster response​​ (floods, wildfires). Passive sensors (e.g., optical cameras) record reflected sunlight, while active sensors (e.g., LiDAR, radar) emit their own signals for all-weather/day-night capabilities. Advances in ​​machine learning​​ and ​​high-resolution imaging​​ have expanded its precision, making remote sensing a cornerstone of Earth observation, military surveillance, and scientific research.
+
+Global Navigation Satellite Systems (GNSS) significantly enhance remote sensing by ​​providing precise geolocation and timing​​, enabling accurate data synchronization and spatial referencing. For example, GNSS supports ​​high-resolution satellite imagery​​ by precisely tagging each pixel with coordinates (e.g., Sentinel-2 mapping deforestation), while ​​airborne LiDAR​​ uses GNSS for centimeter-level elevation models in flood risk assessment. In ​​drone-based agriculture​​, GNSS-guided multispectral sensors map crop health (NDVI) for targeted irrigation, and ​​SAR (Synthetic Aperture Radar)​​ relies on GNSS for motion compensation to detect ground deformations (e.g., volcano monitoring). Additionally, GNSS ​​timestamps​​ unify multi-sensor datasets (optical/thermal/radar), critical for climate studies. By ensuring positional accuracy and temporal alignment, GNSS transforms raw remote sensing data into actionable geospatial intelligence.
+
+GNSS-Reflectometry (GNSS-R) offers unique advantages in remote sensing by ​​leveraging existing GNSS signals as bistatic radar sources​​, eliminating the need for dedicated transmitters and reducing costs. Its ​​multi-frequency, global coverage​​ enables continuous, low-power monitoring of Earth's surface, with applications like ​​soil moisture measurement​​ (e.g., NASA's CYGNSS mission), ​​ocean wind speed retrieval​​, and ​​sea ice detection​​. Unlike traditional monostatic radar, GNSS-R's ​​dual-polarization sensitivity​​ enhances detection of subtle surface changes (e.g., flooding, crop growth), while its ​​short revisit time​​ supports dynamic process tracking (e.g., hurricane intensification). By repurposing ubiquitous GNSS signals, GNSS-R complements conventional remote sensing with ​​scalable, real-time environmental data​​, particularly valuable in underobserved regions.
+
+GNSS-R is a passive remote sensing technique that ​​analyzes reflected GNSS signals​​ off Earth's surface to extract environmental data. GNSS-R ​​repurposes existing satellite navigation signals​​ as illumination sources, with receivers capturing both direct (line-of-sight) and reflected signals. By comparing the **​​delay, phase, and power**​​ of these reflections, GNSS-R infers surface properties like ​​soil moisture​​ (from dielectric changes), ​​ocean roughness​​ (linked to wind speed), and ​​ice thickness​​ (via signal coherence). This bistatic approach enables ​​low-cost, continuous, and wide-coverage monitoring​​, particularly useful for dynamic processes (e.g., storm surges, crop growth) where traditional sensors lack temporal resolution. Missions like NASA's CYGNSS demonstrate its potential to complement active radar/optical systems, filling gaps in global environmental observation.
