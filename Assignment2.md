@@ -75,14 +75,12 @@ Modern smartphones leverage **RTK**, **PPP**, and **PPP-RTK** GNSS techniques to
 
 **the original weighted least square positioning result based on elevation angle**
 
-![image](https://github.com/user-attachments/assets/7ae4bdf5-6472-43be-9b83-39dc49c9ea62)
-
-The mean error is 46.01 meters
+![image](https://github.com/user-attachments/assets/4576eeaf-b2a4-4553-924f-813116ffd992)
 
 In urban environments with sky masking, GNSS positioning is often limited by severe signal obstruction, reducing the number of visible satellites to as few as six. Under such conditions, outright exclusion of NLOS signals—typically caused by reflections off buildings or other structures—would further degrade satellite availability, potentially leading to positioning failures. To address this, the NLOS deweighting method is adopted instead of NLOS exclusion.
 
 **Deweighting when it is classified as NLOS**
-···
+```
             if settings.hasSkymask 
                 if el(i)>skymask(floor(az(i)),2)
                     weight(i)=10;
@@ -90,7 +88,17 @@ In urban environments with sky masking, GNSS positioning is often limited by sev
                     weight(i)=cosd(abs(el(i)-skymask(floor(az(i)),2)));
                 end
             end
-···
+```
 Satellites identified as NLOS are assigned reduced weights in the positioning solution rather than being discarded entirely. This approach minimizes their contribution to the navigation fix while maintaining geometric diversity, thereby improving robustness in challenging urban canyons. The deweighting factor can be dynamically adjusted based on the elevation angle difference between satellite and building boundary.
 
 Compared to exclusion, this method provides a more balanced trade-off between mitigating multipath errors and retaining sufficient satellite observations for reliable positioning.
+
+The result is ploted below
+
+![image](https://github.com/user-attachments/assets/19425ef5-fb9a-478c-be4a-e14e87df1139)
+
+Error comparison
+| **Metric**               | **WLS** | **WLS with NLOS deweighting** |
+|---------------------------|-------------------------|-------------------------|
+| **Positioning Error**  | 70 m                 | 42 m                 |
+
