@@ -2,7 +2,7 @@
 
 ##  AAE SATELLITE COMMUNICATION AND NAVIGATION ASSIGNMENT 2
 
-# Task 1
+# Task 1: Differential GNSS positioning
 
 **Genai: Deepseek R1**
 
@@ -64,3 +64,4 @@ Modern smartphones leverage **RTK**, **PPP**, and **PPP-RTK** GNSS techniques to
 | **PPP** | ✅ Global coverage (no base stations needed)<br>✅ Decimeter-level accuracy (10-30cm)<br>✅ Better for remote areas | ❌ Slow convergence (15-30+ minutes)<br>❌ Requires dual-frequency smartphones<br>❌ Sensitive to signal outages |
 | **PPP-RTK** | ✅ Fast convergence (1-5 minutes)<br>✅ Global + centimeter-level accuracy<br>✅ Works with SSR corrections (e.g., via L-band satellites) | ❌ High processing power needed<br>❌ Dependent on correction networks<br>❌ Limited smartphone compatibility |
 
+#Task 2: GNSS in urban area
