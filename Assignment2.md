@@ -2,7 +2,7 @@
 
 ##  AAE SATELLITE COMMUNICATION AND NAVIGATION ASSIGNMENT 2
 
-## Task 1
+# Task 1
 
 **Genai: Deepseek R1**
 
@@ -35,3 +35,5 @@ where $` \lambda `$ is the carrier wavelength and $` N `$ is the integer ambigui
 ```
 
 Resolving $` \nabla \Delta N `$ enables centimeter-level accuracy. However, DGNSS is limited by distance-dependent error decorrelation (>50 km), unmodeled multipath/noise, and reliance on real-time communication links. It is widely used in maritime navigation, precision agriculture, and surveying, where sub-meter to centimeter accuracy is critical.  
+
+Real-Time Kinematic (RTK) is a high-precision GNSS positioning technique that achieves centimeter-level accuracy by using carrier-phase measurements from a fixed base station to correct errors in a rover receiver's signals. The base station calculates real-time corrections for satellite orbit/clock errors and atmospheric delays, transmitting them to the rover via radio or cellular link. The rover then performs **double differencing** of carrier-phase measurements between satellites and receivers (e.g., $`\nabla\Delta\Phi = \nabla\Delta\rho + \lambda\nabla\Delta N + \nabla\Delta\epsilon`$), resolving integer ambiguities ($`\nabla\Delta N`$) to determine precise relative positions. While RTK requires short baselines (<10 km) and stable communication, it enables applications like surveying, precision agriculture, and autonomous vehicle navigation where sub-meter GPS alone is insufficient.
