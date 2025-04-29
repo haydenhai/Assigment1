@@ -102,3 +102,27 @@ Error comparison
 |---------------------------|-------------------------|-------------------------|
 | **Positioning Error**  | 70 m                 | 42 m                 |
 
+**why still error of deweighting scheme, possible reason""
+
+The primary limitation of NLOS deweighting is that its effectiveness diminishes in severely obstructed urban environments where LOS satellites are extremely scarce (only 2 visible) and NLOS signals dominate the observation set. In such cases, even with deweighting, the residual errors from multiple NLOS signals accumulate, leading to degraded positioning accuracy due to poor satellite geometry and insufficient LOS signal correction.
+
+# Task 3
+
+# Task 4
+**Prompt 1: what is LEO communication satellites, including what system, which one is the most prevalent**
+
+**Prompt 2: where can it be applied, is it potential for navigation system**
+
+**Prompt 4: the potential and current usage of LEO in navigation system**
+
+**Prompt 3: what is the challenge for LEO in navigation**
+
+Low Earth Orbit (LEO) communication satellites operate at altitudes of 500–2,000 km, enabling low-latency, high-bandwidth connectivity for global internet coverage. Major systems include SpaceX's ​​Starlink​​ (the most prevalent, with over 5,000 active satellites), OneWeb, Amazon's ​​Project Kuiper​​, and Telesat's ​​Lightspeed​​. These constellations use inter-satellite laser links and phased-array antennas to deliver broadband services, with Starlink dominating due to its rapid deployment and commercial availability. LEO satellites outperform traditional GEO systems in latency (<50 ms) but require dense constellations (hundreds to thousands) for continuous coverage. Emerging applications include IoT, military communications, and disaster response.
+
+LEO satellites are revolutionizing multiple industries by enabling ​​global, low-latency connectivity and advanced data services​​. In ​​telecommunications​​, they provide high-speed internet to remote and underserved regions (e.g., Starlink, OneWeb). In ​​disaster response​​, they restore critical communications when terrestrial networks fail. The ​​military​​ leverages LEO for secure, resilient communications and real-time battlefield surveillance. ​​Environmental monitoring​​ benefits from LEO’s global coverage, enabling real-time climate, ocean, and wildfire tracking. Additionally, ​​IoT and asset tracking​​ use LEO networks to monitor ships, wildlife, and logistics in remote areas. With their versatility, LEO satellites are transforming connectivity, navigation, and data-driven decision-making across industries.
+
+LEO satellites hold significant potential for navigation due to their ​​stronger signals​​ (100x more powerful than traditional GNSS) and ​​faster orbital dynamics​​, which enhance positioning accuracy and reduce signal acquisition time—especially valuable in urban canyons or GNSS-denied environments. Currently, companies like ​​Xona Space Systems​​ are developing dedicated LEO-PNT (Positioning, Navigation, Timing) constellations, while existing megaconstellations (e.g., Starlink) are being explored for hybrid LEO-GNSS navigation, offering ​​backup resilience​​ against jamming or spoofing. Early applications include ​​high-precision drone navigation​​, ​​autonomous vehicle testing​​, and ​​military PNT solutions​​, with future potential for seamless global coverage, IoT asset tracking, and emergency response systems where traditional GNSS fails. LEO's low latency (<50 ms) and rapid signal refresh could revolutionize real-time navigation, bridging gaps left by conventional satellite systems.
+
+The primary challenges of using LEO satellites for navigation include their ​​rapid orbital motion​​ (~7.8 km/s), which complicates signal tracking and requires frequent handovers, increasing receiver complexity and power consumption. Unlike GNSS, LEO constellations lack standardized ​​navigation-dedicated signals​​, forcing reliance on repurposed communication signals or new protocols (e.g., Xona’s Pulsar). Their ​​dynamic geometry​​ demands real-time ephemeris updates and advanced algorithms to mitigate geometric dilution of precision (GDOP) issues. Additionally, ​​interference risks​​ from dense LEO megaconstellations (e.g., Starlink) and ​​regulatory hurdles​​ for spectrum allocation pose operational barriers. While LEO offers stronger signals and faster convergence, these technical and infrastructural gaps must be resolved to achieve seamless integration with or replacement of traditional GNSS.
+
+# Task 5
