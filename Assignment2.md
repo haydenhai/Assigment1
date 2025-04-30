@@ -133,8 +133,11 @@ According to the principle considering the measurement signal, the protection le
   Pslope(i) = sqrt(sum((K(1:3,i)).^2)) * sqrt(1/W(i,i)) / sqrt(1-P(i,i));
   PL = max(Pslope) * Detect_results.Thres + norminv(1-P_md/2) * URA;
 ```
+The stanford chart is shown below,
+
 ![image](https://github.com/user-attachments/assets/63e4a8a8-6575-4335-aaac-853919672f3f)
 
+The Stanford Chart for WLS illustrates the relationship between positioning accuracy and safety assurance in a weighted RAIM system, where the majority of red data points cluster around a position error of 0–30 m (x-axis) with corresponding protection levels (PL) near 30 m (y-axis), indicating that the algorithm reliably bounds errors within this range. 50 m horizontal threshold contextualize safety margins: all points remain below the 50 m PL (meeting safety requirements), validating the weighted RAIM’s robustness for navigation applications.
 # Task 4
 
 **Prompt 1: what is LEO communication satellites, including what system, which one is the most prevalent**
