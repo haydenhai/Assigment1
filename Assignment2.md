@@ -133,6 +133,7 @@ According to the principle considering the measurement signal, the protection le
   Pslope(i) = sqrt(sum((K(1:3,i)).^2)) * sqrt(1/W(i,i)) / sqrt(1-P(i,i));
   PL = max(Pslope) * Detect_results.Thres + norminv(1-P_md/2) * URA;
 ```
+![image](https://github.com/user-attachments/assets/63e4a8a8-6575-4335-aaac-853919672f3f)
 
 # Task 4
 
