@@ -108,6 +108,32 @@ The primary limitation of NLOS deweighting is that its effectiveness diminishes 
 
 # Task 3
 
+Weighted RAIM is applied here.
+
+The residual here is
+
+```
+ omc(i) = ( obs(i) - norm(Rot_X - pos(1:3), 'fro') - pos(4) - trop ); 
+```
+
+The WSSE is calculated by the following equation, where the y is the residual 
+
+```
+   WSSE_sqrt = sqrt(y'*W*(I-P)*y);
+```
+How the least sqaures fit is good or not is defined by
+
+```
+if (WSSE_sqrt>Thres);
+```
+
+According to the principle considering the measurement signal, the protection level can be calculated by
+
+```
+  Pslope(i) = sqrt(sum((K(1:3,i)).^2)) * sqrt(1/W(i,i)) / sqrt(1-P(i,i));
+  PL = max(Pslope) * Detect_results.Thres + norminv(1-P_md/2) * URA;
+```
+
 # Task 4
 
 **Prompt 1: what is LEO communication satellites, including what system, which one is the most prevalent**
